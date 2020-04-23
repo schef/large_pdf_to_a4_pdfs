@@ -123,8 +123,8 @@ if __name__ == "__main__":
             if (y_iterator[y_count] != "" and x_iterator[x_count + 1] != "" and crop_w_diff == 0):
                 drawText(image_croped_margine, y_iterator[y_count] + x_iterator[x_count + 1], A4_WIDTH - MARGINE*2, A4_HIGHT/2, 10)
 
-            # image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.pdf', 'PDF', quality=100)
-            image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.png', 'PNG', quality=100)
+            image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.pdf', 'PDF', quality=100)
+            # image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.png', 'PNG', quality=100)
             current_x += CROP_WIDTH
             x_count += 1
         current_y += CROP_HIGHT
