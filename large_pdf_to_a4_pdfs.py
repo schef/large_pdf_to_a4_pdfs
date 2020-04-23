@@ -101,7 +101,7 @@ if __name__ == "__main__":
                 crop_h_diff = CROP_HIGHT - (h - current_y)
             image_croped = cropImage(image, current_x, current_y, CROP_WIDTH - crop_w_diff, CROP_HIGHT - crop_h_diff)
             image_croped_margine = addMargineToImage(image_croped)
-            drawText(image_croped_margine, file_name[:-4] + '_' + name)
+            drawText(image_croped_margine, file_name.split('/')[-1] + '_' + name)
             if (y_count > 0):
                 drawText(image_croped_margine, "CUT", A4_WIDTH/2, 0, 10)
             if (x_count > 0):
@@ -116,15 +116,15 @@ if __name__ == "__main__":
             #draw connections
             if (y_iterator[y_count - 1] != "" and x_iterator[x_count] != ""):
                 drawText(image_croped_margine, y_iterator[y_count - 1] + x_iterator[x_count], A4_WIDTH/2, MARGINE*2, 10)
-            if (y_iterator[y_count + 1] != "" and x_iterator[x_count] != ""):
+            if (y_iterator[y_count + 1] != "" and x_iterator[x_count] != "" and crop_h_diff == 0):
                 drawText(image_croped_margine, y_iterator[y_count + 1] + x_iterator[x_count], A4_WIDTH/2, A4_HIGHT - MARGINE*2, 10)
             if (y_iterator[y_count] != "" and x_iterator[x_count - 1] != ""):
                 drawText(image_croped_margine, y_iterator[y_count] + x_iterator[x_count - 1], MARGINE, A4_HIGHT/2, 10)
-            if (y_iterator[y_count] != "" and x_iterator[x_count + 1] != ""):
+            if (y_iterator[y_count] != "" and x_iterator[x_count + 1] != "" and crop_w_diff == 0):
                 drawText(image_croped_margine, y_iterator[y_count] + x_iterator[x_count + 1], A4_WIDTH - MARGINE*2, A4_HIGHT/2, 10)
 
-            image_croped_margine.save('./out/test_' + file_name[:-4] + '.pdf', 'PDF', quality=100)
-            # image_croped_margine.save('./out/' + file_name[:-4] + '_' + name + '.png', 'PNG', quality=100)
+            # image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.pdf', 'PDF', quality=100)
+            image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.png', 'PNG', quality=100)
             current_x += CROP_WIDTH
             x_count += 1
         current_y += CROP_HIGHT
