@@ -108,23 +108,23 @@ if __name__ == "__main__":
                 drawText(image_croped_margine, "CUT", 0, A4_HIGHT/2, 10)
 
             #add centar cursor
-            drawLine(image_croped_margine, A4_WIDTH/2, 0, A4_WIDTH/2, MARGINE*2)
-            drawLine(image_croped_margine, A4_WIDTH/2, A4_HIGHT - MARGINE*2, A4_WIDTH/2, A4_HIGHT)
-            drawLine(image_croped_margine, 0, A4_HIGHT/2, MARGINE*2, A4_HIGHT/2)
-            drawLine(image_croped_margine, A4_WIDTH - MARGINE*2, A4_HIGHT/2, A4_WIDTH, A4_HIGHT/2)
 
             #draw connections
             if (y_iterator[y_count - 1] != "" and x_iterator[x_count] != ""):
                 drawText(image_croped_margine, y_iterator[y_count - 1] + x_iterator[x_count], A4_WIDTH/2, MARGINE*2, 10)
+                drawLine(image_croped_margine, A4_WIDTH/2, 0, A4_WIDTH/2, MARGINE*2)
             if (y_iterator[y_count + 1] != "" and x_iterator[x_count] != "" and crop_h_diff == 0):
                 drawText(image_croped_margine, y_iterator[y_count + 1] + x_iterator[x_count], A4_WIDTH/2, A4_HIGHT - MARGINE*2, 10)
+                drawLine(image_croped_margine, A4_WIDTH/2, A4_HIGHT - MARGINE*2, A4_WIDTH/2, A4_HIGHT)
             if (y_iterator[y_count] != "" and x_iterator[x_count - 1] != ""):
                 drawText(image_croped_margine, y_iterator[y_count] + x_iterator[x_count - 1], MARGINE, A4_HIGHT/2, 10)
+                drawLine(image_croped_margine, 0, A4_HIGHT/2, MARGINE*2, A4_HIGHT/2)
             if (y_iterator[y_count] != "" and x_iterator[x_count + 1] != "" and crop_w_diff == 0):
                 drawText(image_croped_margine, y_iterator[y_count] + x_iterator[x_count + 1], A4_WIDTH - MARGINE*2, A4_HIGHT/2, 10)
+                drawLine(image_croped_margine, A4_WIDTH - MARGINE*2, A4_HIGHT/2, A4_WIDTH, A4_HIGHT/2)
 
-            image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.pdf', 'PDF', quality=100)
-            # image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.png', 'PNG', quality=100)
+            # image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.pdf', 'PDF', quality=100)
+            image_croped_margine.save('./out/' + file_name.split('/')[-1][:-4] + '_' + name + '.png', 'PNG', quality=100)
             current_x += CROP_WIDTH
             x_count += 1
         current_y += CROP_HIGHT
